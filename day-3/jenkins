@@ -1,0 +1,17 @@
+node {
+    
+    stage('clone') { 
+       git branch: 'main', url: 'https://github.com/Sabya007/terraform2024.git' 
+        
+        
+    }
+   stage('change directory') { 
+       dir('day-3') {
+    sh '''                 
+    terraform init
+    terraform plan                 
+    terraform ${action} -auto-approve
+                 '''
+}
+    }
+}
